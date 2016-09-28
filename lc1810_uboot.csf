@@ -1,0 +1,134 @@
+;CVD  Friday, January 13, 2012  14:55:44
+;OPTION SET START
+
+;Interface Option
+;CPUTYPE CORTEXA9
+CPUTYPE CORTEXA9MPCSMP2
+OPTION.JTAGCLOCK 5.000000Mhz
+;OPTION.JTAGCLOCK 0.10000Mhz
+OPTION.EnReset ON
+OPTION.TRST ON
+OPTION.ResBreak OFF
+OPTION.WaitReset OFF
+OPTION.CR OFF
+OPTION.RegisterInit OFF
+OPTION.PCZero OFF
+OPTION.RTCK OFF
+OPTION.DACR OFF
+OPTION.BigEndian OFF
+OPTION.SerialWire OFF
+OPTION.Update ON
+OPTION.DevName lc1810
+OPTION.DACR ON
+MULtiCore.IRPOST 0.
+MULtiCore.DRPost 0.
+MULtiCore.IRPRE 0.
+MULtiCore.DRPre 0.
+MULtiCore.DAPIRPOST 0.
+MULtiCore.DAPDRPOST 0.
+MULtiCore.DAPIRPRE 0.
+MULtiCore.DAPDRPRE 0.
+MULtiCore.JTAGACCESSPORT 3.
+MULtiCore.JTAGPORT 1.
+MULtiCore.DEBUGBASE 0x80000000
+MULtiCore.MEMORYACCESSPORT 1
+MULtiCore.DEBUGACCESSPORT 1
+MULtiCore.COREBASE 0x80030000 0x80032000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 
+MULtiCore.CTIBASE 0x80038000 0x80039000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 
+;MULtiCore.COREBASE 0x80030000 0x0000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 
+;MULtiCore.CTIBASE 0x80038000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 
+
+;Debugger Setting
+DEBUG.AutoCompletedisable OFF
+DEBUG.CHeckTarGetSleepMode OFF
+DEBUG.DisassembleMode AUTO
+DEBUG.DownLoadBuffer 2048.
+DEBUG.DownloadMode NORMAL
+DEBUG.ElapsedTimeMaxCount 50.
+DEBUG.HideDebugWindow ON
+DEBUG.InternallyUsedHWBreakpoint ON
+DEBUG.InterruptRESet
+DEBUG.LoadAsyncMode ON
+DEBUG.MemorySegmentSize S512
+DEBUG.RecordElapsedTimes OFF
+DEBUG.RecordRegister OFF
+DEBUG.ReferenceVoltage VREF
+DEBUG.RefreshInterval 300ms
+DEBUG.ResetAllOption OFF
+DEBUG.ResponseTimeOut 3000ms
+DEBUG.SetNTRSTLow OFF
+DEBUG.ShowDebugWindowTop OFF
+DEBUG.ShowJumpAddress OFF
+DEBUG.ShowSourceLineInCallStack OFF
+DEBUG.SpeedUp ON
+DEBUG.VarToolTipRESet
+DEBUG.VarToolTipFormat HEX
+DEBUG.PollingTime 20ms
+DEBUG.GostopBPTime 0ms
+
+;Processor Properties Setting
+
+;Vector Catch Setting
+PROC.VCReset ON
+PROC.VCUndefine ON
+PROC.SWI OFF
+PROC.Pabort ON
+PROC.Dabort ON
+PROC.Reserved OFF
+PROC.IRQ OFF
+PROC.FIQ OFF
+PROC.VectorCatch OFF
+
+;Semihosting Setting
+PROC.SemiHost.Vector 0x00000008
+PROC.SemiHost.Heapinfo 0x00080000 0x00001000
+PROC.SemiHost.Stackinfo 0x00080000 0x00001000
+PROC.SemiHost.Args 
+
+;Terminal Setting
+PROC.TERM.Method SERial
+PROC.TERM.MODE ASCII
+
+;Serialport Setting
+;PROC.SERialport  9600 8 NONE 1STOP NONE
+
+;Memory Map Setting
+CFlash.Device Am29LV800BB
+CFlash.DownLoad OFF
+CFlash.ERASEtype CHIP
+CFlash.DataWidth W16
+CFlash.Base 0x00000000
+CFlash.Size 0x00000000
+CFlash.BaseTwo 0x00000000
+CFlash.Size 0x00000000
+CFlash.RamBase 0x00000000
+CFlash.RamSize 0x00000000
+CFlash.BLANKCheck OFF
+CFlash.Verify OFF
+CFlash.UserOption OFF
+CFlash.KeepFlashLoaderMemory OFF
+CFlash.SectorRESET
+MemMap.MemRangeRESET
+MemMap.MemBufMode MIX
+MemMap.MemBufSaveoption OFF
+MemMap.MemBufRangeRESET
+
+;VArFormat Setting
+VArFormat.Radix 
+VArFormat.Format.Fixed OFF
+VArFormat.Format.Open OFF
+VArFormat.Display 
+
+;Source Path Setting
+SourcePathReset
+;OPTION SET END
+;Connect
+;Register.Set R0 0
+;Register.Set R1 0x690
+;Register.Set PC 0x02008000
+
+connect
+;DATA.LOAD.BINARY Z:\home\gaojian\working\lc1810uboot\lc1810-uboot\u-boot.bin 0x9FF80000 /BYTE
+;DATA.LOAD.ELF .\u-boot /NOCODE /NOREG
+DATA.SET 0xA00601B0 %L 0x9FF80480
+Register.Set PC 0x9ff80000 
